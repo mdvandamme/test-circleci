@@ -1,11 +1,39 @@
-machine:
-  python:
-    version: 3.5.2
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2.1
 
-dependencies:
-  override:
-    - pip install -r requirements.txt
+orbs:
+  codecov: codecov/codecov@1.0.2
 
-test:
-  override:
-    - nosetests test/math-test.py
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/python:3.7.3
+
+    steps:
+      - checkout
+
+      - run:
+          name: Setup testing environment
+          command: pipenv install
+
+      - run:
+          name: Run tests
+          command: |
+            export PYTHONPATH="$PWD"
+            pipenv run coverage run test/math-test.py
+      - run:
+          name: Check code coverage
+          command: pipenv run codecov
+
+      - codecov/upload:
+          file: coverage.xml
+
+workflows:
+  version: 2.1
+  workflow:
+    jobs:
+      - build
