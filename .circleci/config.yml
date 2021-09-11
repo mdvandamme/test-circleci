@@ -39,5 +39,4 @@ jobs:
 
       - codecov/upload:
           file: coverage.xml
-          token: f2e271d4-c98e-4014-bcf0-e0c2d4440e66 
 
