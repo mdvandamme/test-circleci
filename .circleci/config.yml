@@ -6,7 +6,6 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.2
-  codecov: codecov/codecov@3.0.0
 
 workflows:
   test_et_couverture:  
@@ -24,20 +23,9 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-          name: Setup testing environment
-          command: pipenv install
-
-      - run:
-          name: Run tests
-          command: |
-            export PYTHONPATH="$PWD"
-            pipenv run coverage run test/math-test.py
-      - run:
-          name: Check code coverage
-          command: pipenv run codecov
-
-      - codecov/upload:
-          file: coverage.xml
+      - python/install-packages:
+          pkg-manager: pip
+          # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, 
+          #     maybe one that combines your runtime and test requirements.
+      - run: pytest test/  
 
