@@ -12,7 +12,7 @@ class MathTest(unittest.TestCase):
     
     def test_addition_1(self):
         # Make test fail
-        self.assertEqual(Math.addition(3, 4), 8)
+        self.assertEqual(Math.addition(3, 5), 8)
         
     def test_addition_2(self):
         # Make test fail
