@@ -32,8 +32,16 @@ jobs:
           #     maybe one that combines your runtime and test requirements.
       - run: 
           name: Run tests
-          command: pytest test/*.py
+          command: |
+            pytest test/*.py
+            coverage run -m pytest test/*.py
+            coverage report
+            coverage html
+          
       - codecov/upload:
           file: coverage.xml
+          
+          
+      
 
           
