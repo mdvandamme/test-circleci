@@ -36,10 +36,10 @@ jobs:
             pytest test/*.py
             coverage run -m pytest test/*.py
             coverage report
-            coverage html
+            coverage xml
           
       - codecov/upload:
-
+          file: coverage.xml
           
           
       
