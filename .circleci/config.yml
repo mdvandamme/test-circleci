@@ -33,6 +33,6 @@ jobs:
           name: Run tests
           command: pytest test/*.py
       - codecov/upload
-          file: './coverage/clover.xml'
+          file: ./coverage/clover.xml
           token: f2e271d4-c98e-4014-bcf0-e0c2d4440e66
           
