@@ -5,8 +5,7 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.2
-  coveralls: coveralls/coveralls@1.0.6
+  codecov: codecov/codecov@3.0.0
 
 workflows:
   test_et_couverture:  
@@ -20,7 +19,7 @@ jobs:
   build-and-test:
     docker:
       # specify the version you desire here
-      - image: circleci/python:3.7.3
+      - image: cimg/base:stable
 
     steps:
       - checkout
@@ -40,6 +39,10 @@ jobs:
 
       - codecov/upload:
           file: coverage.xml
+          token: f2e271d4-c98e-4014-bcf0-e0c2d4440e66 
+
+
+          
 
 
       
