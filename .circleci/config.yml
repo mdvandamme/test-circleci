@@ -34,8 +34,7 @@ jobs:
           name: Run tests
           command: |
             pytest test/*.py
-            coverage run -m pytest test/*.py
-            coverage report
+            coverage run -m --source=src pytest test/*.py
             coverage xml
           
       - codecov/upload:
