@@ -29,4 +29,4 @@ jobs:
           #     maybe one that combines your runtime and test requirements.
       - run: 
           name: Run tests
-          command: pytest
+          command: pytest test/
