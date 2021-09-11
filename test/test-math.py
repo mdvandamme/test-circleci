@@ -25,4 +25,7 @@ class MathTest(unittest.TestCase):
     def test_soustraction_2(self):
         # Make test fail
         self.assertEqual(Math.soustraction(3, -4), 7)
-    
+
+
+if __name__ == "__main__":
+    unittest.main()
